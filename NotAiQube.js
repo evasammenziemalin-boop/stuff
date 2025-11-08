@@ -51,7 +51,7 @@ class ScratchCustom {
 	} 
 
 	power({a,b}, util) {
-		return(math.Pow(a, b))
+		return(a ** b)
 	}
     }
 

@@ -59,12 +59,11 @@ class ScratchCustom {
 	    	]
 	    } // use arrow keys to scroll down
 	} 
-
 	power({a,b}, util) {
 		return(a ** b)
 	}
 	pi({c}, util) {
-		return(3.1415926535 * 2)
+		return(3.1415926535 * c)
 	}
     }
 

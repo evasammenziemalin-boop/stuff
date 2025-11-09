@@ -26,29 +26,23 @@ class ScratchCustom {
 	}
 
 	getInfo() {
-            return {
-            "id": "SimpleGamepad",
-            "name": "SimpleGamepad",
-            "blocks": [{
-                        "opcode": "buttonPressedReleased",
-                        "blockType": "hat",
-                        "text": "button [b] [eventType]",
-                        "arguments": {
-                            "b": {
-                                "type": "number",
-                                "defaultValue": "0"
-                            },
-                            "eventType": {
-                                "type": "number",
-                                "defaultValue": "1",
-                                "menu": "pressReleaseMenu"
-                            },
-                        },
-                    },
-            ],
-            "menus": {
-                "pressReleaseMenu": [{text:"press",value:1}, {text:"release",value:0}],
-            }   
+    	    return {
+	    	id: "math", // any other id breaks it, idk why
+	    	name: "DateTime",
+	    	blocks: [
+	        {
+	        	blockType: 'reporter',
+	        	opcode: 'datetime',
+	        	text: 'Current Date & Time',
+	        },
+	      	
+	    	]
+	    } // use arrow keys to scroll down
+	} 
+
+	datetime(util) {
+		Date()
+	}
     }
 
 // ============== globalize vm and load extension ===============

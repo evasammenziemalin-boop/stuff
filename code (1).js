@@ -63,7 +63,7 @@ class ScratchCustom {
 	power({a,b}, util) {
 		return(a ** b)
 	},
-	pi(c, util) {
+	pi({c}, util) {
 		return(3.1415926535 * 2)
 	}
     }

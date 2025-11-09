@@ -41,7 +41,7 @@ class ScratchCustom {
 	} 
 
 	datetime(util) {
-		Date()
+		return(Date())
 	}
     }
 

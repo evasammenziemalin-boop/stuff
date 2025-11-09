@@ -28,22 +28,26 @@ class ScratchCustom {
 	getInfo() {
     	    return {
 	    	id: "math", // any other id breaks it, idk why
-	    	name: "My Extension",
+	    	name: "NotAiQube",
 	    	blocks: [
 	        {
-	        	blockType: 'command',
+	        	blockType: 'reporter',
 	        	opcode: 'power',
 	        	text: '[a] ^ [b]',
 	        	arguments: {
 	        		a: {
 	        			type: "number",
-	        			defaultValue: "4"
+	        			defaultValue: "2"
 	        		},
 	        		b: {
-	        			type: "number",
-	        			defaultValue:"2"
+	        			type: "string",
+	        			defaultValue:"4"
 	        		}
-	        	}
+	        	},
+	        {
+	        	blockType: 'reporter',
+	        	opcode: 'pi',
+	        	text: 'π',
 	        },
 	      	
 	    	]
@@ -51,8 +55,12 @@ class ScratchCustom {
 	} 
 
 	power({a,b}, util) {
-		return(a ^ b)
+		return(a ** b)
+	},
+	pi(util) {
+		return(3.1415926535)
 	}
+
     }
 
 // ============== globalize vm and load extension ===============

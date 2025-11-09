@@ -44,12 +44,18 @@ class ScratchCustom {
 	        			defaultValue:"4"
 	        		}
 	        	},
+	        },
 	        {
 	        	blockType: 'reporter',
 	        	opcode: 'pi',
-	        	text: 'π',
-	        },
-	      	
+	        	text: 'π * [c]',
+	        	arguments: {
+	        		c: {
+	        			type: "number",
+	        			defaultValue: "1"
+	        		}
+	        	},
+	        },	
 	    	]
 	    } // use arrow keys to scroll down
 	} 
@@ -57,10 +63,9 @@ class ScratchCustom {
 	power({a,b}, util) {
 		return(a ** b)
 	},
-	pi(util) {
-		return(3.1415926535)
+	pi(c, util) {
+		return(3.1415926535 * 2)
 	}
-
     }
 
 // ============== globalize vm and load extension ===============

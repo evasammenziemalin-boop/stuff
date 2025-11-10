@@ -28,29 +28,149 @@ class ScratchCustom {
 	getInfo() {
     	    return {
 	    	id: "math", // any other id breaks it, idk why
-	    	name: "My Extension",
-	    	blocks: [
-	        {
-	          opcode: 'HTMLtag',
-	          blockType: reporter,
-	          text: 'HTML tag [ONE]',
-	          arguments: {
-	            ONE: {
-	              type: Scratch.ArgumentType.STRING,
-	              defaultValue: 'h1'
-	            },
-	            
-	          }
-	        },
+	    	name: "HTML Blocks",
+        blocks: [
+          {
+            opcode: 'HTMLtag',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'HTML tag [ONE]',
+            arguments: {
+              ONE: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'h1'
+              },
+              
+            }
+          },
+          {
+            opcode: 'HTMLtagWithAttr',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'HTML tag [ONE] with attributes [TWO]',
+            arguments: {
+              ONE: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'div'
+              },
+              TWO: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'id="div1"'
+              },
+              
+            }
+          },
+          {
+            opcode: 'HTMLtagWithContents',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'HTML tag [ONE] contents [TWO]',
+            arguments: {
+              ONE: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'div'
+              },
+              TWO: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: '<p> Hello! </p>'
+              },
+              
+            }
+          },
+          {
+            opcode: 'HTMLtagContentsAndAttributes',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'HTML tag [ONE] attributes [TWO] contents [THREE]',
+            arguments: {
+              ONE: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'div'
+              },
+              TWO: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'id="header"'
+              },
+              THREE: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: '<h1> Hello! </h1>'
+              },
+            }
+          },
+          {
+            opcode: 'encodeToDataURL',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'encode HTML [ONE] to URL',
+            arguments: {
+              ONE: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: '<div> Hello! </div>'
+              },
+              
+            }
+          },
+          {
+            opcode: 'openHTMLcode',
+            blockType: Scratch.BlockType.COMMAND,
+            text: 'open HTML [ONE]',
+            arguments: {
+              ONE: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: '<div> Hello! </div>'
+              },
+              
+            }
+          },
+          {
+            opcode: 'RunJS',
+            blockType: Scratch.BlockType.COMMAND,
+            text: 'Run JS code [ONE]',
+            arguments: {
+              ONE: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'console.log("Hello World!")'
+              },
+              
+            }
+          },
+          {
+            opcode: 'RunJSwithReturn',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'Evaluate JS code [ONE]',
+            arguments: {
+              ONE: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'return("Hello World!")'
+              },
+              
+            }
+          },
+        ]
+      };
+    }
+  
+    HTMLtag(args) {
+      return(`<${args.ONE}> </${args.ONE}>`);
+    }
+    HTMLtagWithAttr(args) {
+        return(`<${args.ONE} ${args.TWO}> </${args.ONE}>`);
+      }
+      HTMLtagWithContents(args) {
+        return(`<${args.ONE}> ${args.TWO} </${args.ONE}>`);
+      }
+      HTMLtagContentsAndAttributes(args) {
+        return(`<${args.ONE} ${args.TWO}> ${args.THREE} </${args.ONE}>`);
+      }
+      encodeToDataURL(args) {
+        return(`data:text/html, ${args.ONE}`);
+      }
+      openHTMLcode(args) {
+        let codepage = window.open(`data:text/html,<!DOCTYPE html> <html> <head> </head> <body> </body> </html>`);
+        codepage.document.body.innerHTML = args.ONE;
+      }
+      RunJS(args) {
+        eval(args.ONE);
+      }
+      RunJSwithReturn(args) {
+        return(eval("{ let funct = function() {" + args.ONE + "}; funct(); }"));
+      }
 
-	      	
-	    	]
-	    } // use arrow keys to scroll down
-	} 
-
-	HTMLtag(args) {
-		return(`<${args.ONE}> </${args.ONE}>`);
-	}
     }
 
 // ============== globalize vm and load extension ===============

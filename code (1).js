@@ -27,6 +27,9 @@ class ScratchCustom {
 
 	getInfo() {
     	    return {
+	    	color1: '#00C2FF', 
+	    	color2: '#00a0ff', 
+	    	color3: '#008fff', 
 	    	id: "math", // any other id breaks it, idk why
 	    	name: "NotAiQube",
 	    	blocks: [

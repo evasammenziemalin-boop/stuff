@@ -27,36 +27,60 @@ class ScratchCustom {
 
 	getInfo() {
     	    return {
+	    	color1: '#00C2FF', 
+	    	color2: '#00a0ff', 
+	    	color3: '#008fff', 
 	    	id: "math", // any other id breaks it, idk why
-	    	name: "Color",
-	    	color1: '#ff7777', 
-	    	color2: '#ee6666', 
-	    	color3: '#dd5555', 
+	    	name: "NotAiQube",
 	    	blocks: [
 	        {
-	        	blockType: 'command',
-	        	opcode: 'Out',
-	        	text: 'output [a] to [b]',
+	        	blockType: 'reporter',
+	        	opcode: 'power',
+	        	text: '[a] ^ [b]',
 	        	arguments: {
 	        		a: {
 	        			type: "number",
-	        			defaultValue: " "
+	        			defaultValue: "2"
 	        		},
 	        		b: {
 	        			type: "string",
-	        			defaultValue:" "
+	        			defaultValue:"4"
 	        		}
-	        	}
+	        	},
 	        },
-	      	
+	        {
+	        	blockType: 'boolean',
+	        	opcode: 'castToBool',
+	        	text: '[a]',
+	        	arguments: {
+	        		a: {
+	        			type: "string",
+	        			defaultValue: "2"
+	        		}
+	        	},
+	        },
+	        {
+	        	blockType: 'reporter',
+	        	opcode: 'pi',
+	        	text: 'π * [c]',
+	        	arguments: {
+	        		c: {
+	        			type: "number",
+	        			defaultValue: "1"
+	        		}
+	        	},
+	        }	
 	    	]
 	    } // use arrow keys to scroll down
 	} 
-
-	Out({a,b}, util) {
-		let variable = util.target.lookupOrCreateList(undefined, b);
-	    if(variable)
-       		variable.value = a.split(' ');
+	power({a,b}, util) {
+		return(a ** b)
+	}
+	castToBool({a}, util) {
+		return(a)
+	}
+	pi({c}, util) {
+		return(3.1415926535 * c)
 	}
     }
 
